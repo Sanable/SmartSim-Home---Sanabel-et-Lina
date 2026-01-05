@@ -1,0 +1,834 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{multirow}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\usepackage[normalem]{ulem}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\includegraphics[width=0.63611in,height=5.26111in]{vertopal_e39372513fc74674888784101d54e19c/media/image1.png}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\includegraphics[width=4.24028in,height=0.90694in]{vertopal_e39372513fc74674888784101d54e19c/media/image2.png}
+\end{quote}
+
+Licence MIASHS deuxième année
+
+\begin{quote}
+\textbf{Rapport de projet informatique Smart Sim Home :}\\
+\textbf{Le Simulateur de maison}\\
+\textbf{intelligente}
+
+\textbf{Lien GitHub :}
+\end{quote}\strut
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\textbf{Membres du groupe}
+
+\begin{quote}
+\textbf{ABDELQADER}\\
+\textbf{Sanabel 44011246}\\
+\textbf{Lina} \textbf{BOULIFA}\\
+\textbf{44012836}
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\includegraphics[width=2.19722in,height=2.92639in]{vertopal_e39372513fc74674888784101d54e19c/media/image3.png}
+\end{quote}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\includegraphics[width=2.14583in,height=2.86389in]{vertopal_e39372513fc74674888784101d54e19c/media/image4.png}
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+\includegraphics[width=2.22917in,height=0.28194in]{vertopal_e39372513fc74674888784101d54e19c/media/image5.png}
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{1\hspace{0pt} Introduction}\hspace{0pt}\\
+\textbf{2\hspace{0pt} Environnement de travail}\hspace{0pt}\\
+\textbf{3\hspace{0pt} Description du projet et objectifs}\hspace{0pt}\\
+\textbf{4\hspace{0pt} Bibliothèques, Outils et
+technologies}\hspace{0pt}\\
+\textbf{5\hspace{0pt} Travail réalisé}\hspace{0pt}\\
+\textbf{6\hspace{0pt} Difficultés rencontrées}\hspace{0pt}\\
+\textbf{7\hspace{0pt} Bilan}\hspace{0pt}\\
+7.1\hspace{0pt} Conclusion . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . .\hspace{0pt} 7.2\hspace{0pt} Perspectives . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+.\hspace{0pt}\textbf{8\hspace{0pt} Bibliographie}\hspace{0pt}\\
+\textbf{9\hspace{0pt} Webographie}\hspace{0pt}\\
+\textbf{10\hspace{0pt}Annexes}\hspace{0pt}\\
+\textbf{A Cahier des charges}\hspace{0pt}\\
+\textbf{B\hspace{0pt} Exemple d\textquotesingle exécution du
+projet}\hspace{0pt}\\
+\textbf{C\hspace{0pt} Manuel utilisateur}\hspace{0pt}
+\end{quote}\strut
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{4}\\
+\textbf{4}\\
+4\\
+\textbf{4}\\
+\textbf{4}\\
+\textbf{4}\\
+\textbf{4}\\
+4\\
+4\\
+\textbf{5}\\
+\textbf{6}\\
+\textbf{7}\\
+\textbf{7}\\
+\textbf{7}\\
+\textbf{7}
+\end{quote}\strut
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+\includegraphics[width=0.17639in,height=0.125in]{vertopal_e39372513fc74674888784101d54e19c/media/image6.png}\includegraphics[width=1.52083in,height=0.26042in]{vertopal_e39372513fc74674888784101d54e19c/media/image8.png}
+
+\emph{\textbf{\uline{INTRODUCTION}}}
+
+Dans un monde où la technologie cherche à se fondre avec notre
+environnement, l'assistant vocale est devenu une interface familière
+dans la domotique. Notre projet SmartSim Home s'inscrit dans cette
+tendance en allant un peu plus loin : là où des systèmes comme Alexa se
+contentent de répondre à des commandes, notre simulateur cherche à
+s'adapter au contexte et à anticiper les besoins de l'utilisateur pour
+améliorer son quotidien.
+
+Concrètement, SmartSim Home simule le fonctionnement d'une maison
+connectée capable de contrôler différents éléments du quotidien :
+température, lumière, volets et équipements électriques, le tout
+accessible via une interface web. Le simulateur ne se limite pas au
+confort domestique : il vise également à optimiser la consommation
+d'énergie à l'aide de modes spécifiques comme le mode économique, tout
+en contribuant à l'amélioration du cadre de vie des occupants. Il
+intègre plusieurs capteurs simulés, notamment des capteurs de
+température, de luminosité, d'humidité, mais aussi un détecteur de
+monoxyde de carbone, un gaz dangereux et potentiellement mortel.
+
+Ce projet a été développé à l'aide d'outils d'IA générative et reste
+théorique : il s'agit d'un simulateur et non d'une installation réelle.
+
+Toutefois, il a été conçu dans l'optique d'évoluer. À terme, l'objectif
+serait de permettre au système de communiquer avec l'utilisateur à la
+manière d'un assistant vocal de type \emph{Alexa}, afin de le prévenir,
+lui donner des conseils ou signaler une anomalie en temps réel.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{2\hspace{0pt}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Environnement de travail}
+\end{quote}
+\end{minipage} &
+\multirow{2}{*}{\begin{minipage}[b]{\linewidth}\raggedright
+\includegraphics[width=2.26111in,height=1.40555in]{vertopal_e39372513fc74674888784101d54e19c/media/image7.png}
+\end{minipage}} \\
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6667} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+La collaboration au sein du binôme s'est organisée principalement sur
+Google Drive. Nous avons organisé notre espace de travail avec une
+arborescence de dossiers dédiés (documentation, codes,
+algorithmes\ldots) permettant d'accéder aux ressources de manière
+immédiate. Cette application a servi de cahier de bord central pour le
+projet : nous y mettions toutes les idées fondamentales, les extraits de
+code clés, et le suivi détaillé des étapes à réaliser. Chaque avancée
+par un membre du binôme était documentée et partagée dans ce dossier
+commun,
+\end{quote}
+\end{minipage}} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+permettant une vision synchronisée de l'avancement pour les deux membres
+de l'équipe.
+
+Pour la gestion de notre code source, nous avons également utilisé Git
+comme système de versionnage, afin de travailler de manière ordonnée sur
+les mêmes fichiers, de suivre l\textquotesingle historique de nos
+modifications et de faciliter la collaboration.
+
+Dès le lancement du projet, nous nous sommes rencontrées à plusieurs
+reprises pour des séances de brainstorming. Ces réunions en face-à-face
+nous ont permis de préciser l\textquotesingle idée générale, de définir
+les principales fonctionnalités et d\textquotesingle établir une
+première feuille de route.
+
+Concernant l'environnement de développement, le projet a été
+principalement codé sur une machine macOS, équipée d'une puce Apple M3,
+du côté de Sanabel. Le développement a été réalisé à l'aide de l'éditeur
+Visual Studio Code, choisi pour sa polyvalence, sa légèreté et son large
+écosystème d'extensions facilitant le travail en Python.
+
+\includegraphics[width=0.17639in,height=0.125in]{vertopal_e39372513fc74674888784101d54e19c/media/image6.png}\includegraphics[width=1.52083in,height=0.26042in]{vertopal_e39372513fc74674888784101d54e19c/media/image8.png}
+
+De son côté, Lina a recréé l'intégralité de l'arborescence du projet sur
+son ordinateur Windows, afin de pouvoir effectuer des modifications et
+des ajustements. Cette duplication était nécessaire, le projet ayant
+évolué progressivement au fil du temps, avec des ajouts et des
+réorganisations fréquentes du code et des fichiers.
+
+Le projet a été codé en Python 3, et a nécessité pour son exécution la
+présence de l'interpréteur Python dans sa version 3.11 ou supérieure
+comme pré requis avant l'installation des\\
+dépendances. Sanabel a utilisé la version 3.12.7.
+
+La documentation technique et le rapport ont été rédigésen LaTeX via la
+plateforme Overleaf. Ce choix a été motivé par la qualité de mise en
+page requise pour un rapport formel et la gestion automatisée de la
+bibliographie.
+
+\textbf{3\hspace{0pt}Description du projet et objectifs}
+
+SmartSim Home est un simulateur de maison intelligente. Son objectif
+principal est de reproduire le fonctionnement d'un écosystème domotique
+dans un environnement virtuel et contrôlé. Il se distingue des autres
+systèmes similaires de par sa capacité à anticiper les besoins de
+l'utilisateur plutôt que de se limiter à y répondre. Le projet
+s'articule autour de quatre piliers fondamentaux :
+
+●\hspace{0pt} Centraliser la surveillance de plusieurs capteurs
+virtuels, qui permettent de mesurer la luminosité, la présence d'un
+individu dans une pièce, l'humidité, la qualité de l'air ou encore le
+monoxyde de carbone.
+
+●\hspace{0pt} Assurer la commande de plusieurs actionneurs simulés
+incluant les systèmes d'éclairage, de chauffage et de climatisation, les
+volets, prises électriques et un système d'alarme.
+
+●\hspace{0pt} Activer des modes de fonctionnement prédéfinis, comme un
+mode automatique qui permet de tout gérer, un mode éco pour réduire la
+consommation, un mode vacances et une alarme qui assure la sécurité des
+habitants. En effet, elle retentit lorsqu'un capteur détecte un niveau
+de monoxyde de carbone anormalement élevé.
+
+●\hspace{0pt} Intégrer une intelligence artificielle locale via Ollama,
+avec à terme la possibilité d\textquotesingle interagir par commande
+vocale ou textuelle.
+
+L'ensemble de ces mécanismes est visualisé via une interface utilisateur
+unifiée, qui sert de tableau de bord à ce projet.
+
+\textbf{4\hspace{0pt}Bibliothèques, Outils et technologies}
+
+Le projet repose sur une architecture qui combine un serveur web
+embarqué et des bibliothèques Python spécialisées pour créer un
+environnement de simulation interactif comme le nôtre.
+
+L'application intègre un serveur web utilisant le modèle Python standard
+http.server avec les bases HTTPServer et BaseHTTPRequestHandler. Ce
+serveur délivre\\
+localement une interface utilisateur développée en HTML, CSS et
+JavaScript, accessible à l'adresse .
+
+Le projet repose sur plusieurs bibliothèques Python :
+
+\includegraphics[width=0.17639in,height=0.125in]{vertopal_e39372513fc74674888784101d54e19c/media/image6.png}\includegraphics[width=1.52083in,height=0.26042in]{vertopal_e39372513fc74674888784101d54e19c/media/image8.png}
+
+○\hspace{0pt} threading et time pour gérer les processus simultanés et
+la synchronisation ○\hspace{0pt} random pour générer des valeurs
+réalistes des capteurs virtuels\\
+○\hspace{0pt} json pour structurer et échanger les données entre le
+serveur et l'interface ○\hspace{0pt} pyttsx3 pour implémenter des
+réponses par synthèse vocale\\
+○\hspace{0pt} ollama pour une assistance par IA locale, permettant
+d'enrichir les interactions
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{1.0000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\includegraphics[width=6.59444in,height=2.16667in]{vertopal_e39372513fc74674888784101d54e19c/media/image9.png}○\hspace{0pt}
+\end{quote}
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+Cette combinaison d'outils permet d\textquotesingle exécuter l'ensemble
+du simulateur directement en local sur une seule machine.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{5\hspace{0pt}}
+\end{minipage} &
+\multicolumn{2}{>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6667} + 2\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Travail réalisé}
+\end{quote}
+\end{minipage}} \\
+\midrule()
+\endhead
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6667} + 2\tabcolsep}}{%
+\includegraphics[width=1.63611in,height=3.13611in]{vertopal_e39372513fc74674888784101d54e19c/media/image10.png}}
+& \begin{minipage}[t]{\linewidth}\raggedright
+\begin{quote}
+L'objectif principal du travail était de concevoir une architecture
+logicielle fonctionnelle et évolutive, capable de gérer des capteurs,
+des actionneurs et différents modes de fonctionnement, tout en préparant
+la future intégration de l'intelligence artificielle et de l'interaction
+vocale.
+
+Dans un premier temps, nous avons sollicité ChatGPT et DeepSeek afin de
+nous aider à générer et structurer le code initial du projet. Ces outils
+nous ont\\
+principalement guidés dans la mise en place de l'arborescence du projet,
+la création des différents dossiers, des fichiers Python ainsi que dans
+le choix et l'organisation des bibliothèques nécessaires. Cette phase a
+permis d'obtenir une base de travail solide et structurée.
+
+Le développement reposait sur un processus itératif de copier-coller du
+code suivi de tests et d'adaptations manuelles. Au fil du projet, le
+code a été affiné et enrichi progressivement avec des fonctionnalités
+supplémentaires. Les modes spécifiques tels que le mode automatique, le
+mode éco ou le mode vacances ont ainsi été implémentés, permettant
+d'adapter le comportement de la maison en fonction du
+\end{quote}\strut
+\end{minipage} \\
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+contexte.
+
+Nous avons également commencé à travailler sur l'intégration d'une
+intelligence artificielle locale via Ollama. Son objectif à terme est de
+permettre une interaction plus naturelle entre l'utilisateur et la
+maison intelligente. À ce stade du projet, l'IA est intégrée au code
+mais son utilisation reste limitée et expérimentale.OLLAMA répond à
+certaine question poser par l'utilisateur concernant la maison
+malheureusement sa réactivité est encore limitée.
+
+Concernant l'interaction avec l'utilisateur, la commande vocale n'est
+pas encore opérationnelle. Il n'est actuellement pas possible de
+dialoguer directement avec l'application ni de formuler des
+
+\includegraphics[width=0.17639in,height=0.125in]{vertopal_e39372513fc74674888784101d54e19c/media/image6.png}\includegraphics[width=1.52083in,height=0.26042in]{vertopal_e39372513fc74674888784101d54e19c/media/image8.png}
+
+requêtes vocales ou écrites à destination de l'assistant. L'interaction
+se fait donc principalement à travers l'interface web, à l'aide de
+boutons qui permettent d'activer ou de désactiver certains modes et
+équipements. Celle-ci permet de visualiser l'état des capteurs, des
+actionneurs et des alertes, rendant la simulation exploitable et
+compréhensible.
+
+Le but final du projet est de parvenir à une maison intelligente
+totalement autonome et pilotable à la voix, capable de comprendre les
+demandes de l'utilisateur, de dialoguer de manière naturelle et de
+prendre des décisions sans intervention manuelle. Le travail réalisé
+constitue donc une base solide, servant de fondation pour des
+améliorations futures.
+
+\textbf{Détail des modes implémentés}
+
+Le mode Éco a été conçu dans le but de réduire la consommation
+énergétique de la maison intelligente tout en maintenant un niveau de
+confort acceptable. Ce mode peut être activé manuellement par
+l'utilisateur à l'aide d'un bouton situé dans la section ``Modes'' de
+l'interface web.
+
+Une fois le mode Éco activé, plusieurs règles spécifiques sont
+appliquées automatiquement au système :
+
+●\hspace{0pt} Le chauffage ne s'active que lorsque la température
+descend en dessous de 18 °C, ce qui permet d'éviter une utilisation
+excessive du chauffage.\hspace{0pt}
+
+●\hspace{0pt} La climatisation ne s'active qu'à partir de 27 °C, ce qui
+oblige à l\textquotesingle utiliser lorsqu'il est réellement
+nécessaire.\hspace{0pt}
+
+●\hspace{0pt} L'intensité lumineuse est volontairement plafonnée à 35
+\%, même si l'éclairage est allumé, afin de réduire la consommation
+électrique.\hspace{0pt}
+
+●\hspace{0pt} La prise du salon est systématiquement désactivée, ce qui
+permet d'éliminer les consommations inutiles liées aux appareils en
+veille.
+
+Ce mode montre la capacité du système à adapter le comportement des
+actionneurs en fonction de règles prédéfinies, avec un objectif clair
+d'optimisation. Il illustre également l'intérêt de l'automatisation dans
+une maison intelligente, en réduisant les interventions manuelles de
+l'utilisateur.
+
+Exemples :
+
+\includegraphics[width=6.59444in,height=2.70833in]{vertopal_e39372513fc74674888784101d54e19c/media/image11.png}
+
+\includegraphics[width=6.59444in,height=2.52778in]{vertopal_e39372513fc74674888784101d54e19c/media/image12.png}
+
+Le mode Alarme est un mode de sécurité principalement lié à la détection
+de forte présence de monoxyde de carbone (CO). Contrairement aux autres
+modes, il ne peut pas être activé manuellement par l'utilisateur : il
+est déclenché automatiquement par le système lorsqu\textquotesingle un
+seuil critique est dépassé (c'est pour cela que le mode simulation
+existe).
+
+Lorsque le niveau de monoxyde de carbone atteint ou dépasse 200 ppm, le
+mode Alarme s'active automatiquement et entraîne plusieurs actions
+immédiates :
+
+●\hspace{0pt} Activation de l'alarme de sécurité.\hspace{0pt}
+
+●\hspace{0pt} Arrêt automatique du chauffage, de la climatisation et de
+certaines prises afin de limiter les sources potentielles de
+danger.\hspace{0pt}
+
+●\hspace{0pt} Ouverture maximale des volets pour favoriser
+l'aération.\hspace{0pt}
+
+●\hspace{0pt} Activation de l'éclairage à pleine intensité pour signaler
+visuellement la situation.\hspace{0pt}
+
+●\hspace{0pt} Génération d'alertes visibles dans l'interface,
+accompagnées de messages de prévention incitant à évacuer les lieux et à
+contacter les secours.
+
+Le mode Alarme se désactive automatiquement lorsque le niveau de
+monoxyde de carbone redescend sous le seuil critique, ce qui évite de
+maintenir inutilement une alerte. Ce\\
+fonctionnement met en évidence la capacité du système à gérer des
+situations critiques et aider à la prise de décision, renforçant ainsi
+la sécurité globale de l'habitation.
+
+Nous avons donc ajouté un mode simulation qui permet de montrer ce
+qu\textquotesingle il se passe lorsque le taux de monoxyde de carbone
+est trop élevé (voir dans la partie exemples
+d\textquotesingle exécutions)
+
+Enfin, sans avoir besoin d'activer aucun mode, le programme répond
+d'emblée à certaines règles qu\textquotesingle on a ajouté dans le code:
+
+``si luminosité \textless{} 40 → allumer lumière''\hspace{0pt}
+
+``si présence == false → couper prise''\hspace{0pt}
+
+``si température \textless{} 18 → activer chauffage''
+
+\textbf{La répartition du travail entre les membres}
+
+Lina : implémentation de l'IA avec ollama, du détecteur de CO, rédaction
+du rapport, version finale du projet, développement de l'algorithme pour
+le mode éco ,pour le mode simulation,et
+
+\includegraphics[width=0.17639in,height=0.125in]{vertopal_e39372513fc74674888784101d54e19c/media/image6.png}\includegraphics[width=1.52083in,height=0.26042in]{vertopal_e39372513fc74674888784101d54e19c/media/image8.png}
+
+pour l'instauration des règles générales , tests et validation de
+l'affichage de données, ajout de la commande vocale, gestions des
+alertes et messages de prévention et integrztion de la\\
+commande vocale.
+
+Sanabel : création de la base du projet/back-end, rédaction du rapport
+et conversion en LaTeX, développement de l'interface web en HTML,
+gestion de la communication entre le backend et l'interface, définition
+de l'architecture globale du projet, intégration des capteurs et
+actionneurs dans l'architecture
+
+\textbf{6\hspace{0pt}Difficultés rencontrées}
+
+Pendant le développement du projet, nous avons rencontré plusieurs
+difficultés. Tout d'abord, l'ajout de nouvelles fonctions posait souvent
+problème, notamment à cause des erreurs d'indentation. Ces erreurs
+empêchaient parfois le programme de fonctionner correctement et
+nécessitaient un temps de débogage important.
+
+De plus, une première approche consistant à ajouter le code HTML dans un
+fichier séparé a échoué en raison de problèmes de communication avec le
+serveur Python.
+
+Pour résoudre ce problème, nous avons opté pour l'intégration du code
+HTML directement dans le fichier principal (main.py), ce qui a rétabli
+la liaison et a permis le bon fonctionnement de l'interface.
+
+Ensuite, certaines modifications apportées au code n'apparaissaient pas
+toujours sur l'interface. Même après avoir changé le code, le résultat
+n'était pas visible\\
+immédiatement, compliquant le débogage et rendant le travail plus lent.
+
+Nous avons également eu des difficultés avec la gestion de la voix. Il
+arrivait que la voix se répète plusieurs fois ou qu'elle continue de
+parler après avoir cliqué sur « fin », notamment après avoir mis
+``\emph{off''} au bouton activer mode simulation.
+
+Concernant l'intelligence artificielle implémentée avec Ollama, elle
+fonctionne mais ne répond pas à toutes les questions qu'on lui pose.
+Nous ne sommes pas parvenues à identifier la source du problème.
+
+Enfin, la plus grande difficulté a été d'ajouter des fonctionnalités
+plus avancées. À chaque nouvelle amélioration, il fallait souvent
+modifier une grande partie du code existant,bien que le code était codé
+par les ia tel que chatgpt et deep seek on rencontrait toujours des
+incohérence ce qui entraînait plusieurs modifiaction . Cela rendait le
+projet plus complexe à faire évoluer et demandait beaucoup d'ajustements
+avant d'obtenir un résultat stable.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{7\hspace{0pt}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\textbf{Bilan}
+\end{quote}
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+L'objectif principal de ce projet était de créer une maison intelligente
+capable de réagir\\
+automatiquement à différents paramètres (température, présence, qualité
+de l'air, etc.) tout en intégrant une interaction avec une intelligence
+artificielle. Ce projet nous a confrontées à la réalité d'un système
+complet, allant du code backend jusqu'à l'interface utilisateur, ainsi
+qu'à la logique derrière l'automatisation et la gestion des capteurs et
+actionneurs.
+
+Grâce à ce travail, nous avons appris à utiliser efficacement des outils
+d'IA générative pour
+
+\includegraphics[width=0.17639in,height=0.125in]{vertopal_e39372513fc74674888784101d54e19c/media/image6.png}\includegraphics[width=1.52083in,height=0.26042in]{vertopal_e39372513fc74674888784101d54e19c/media/image8.png}
+
+produire du code, à formuler des prompts précis pour obtenir des
+résultats exploitables et à tester, corriger et adapter le code généré à
+nos besoins. Nous avons aussi pris conscience de
+l\textquotesingle importance de bien organiser un projet pour faciliter
+son évolution.
+
+Pour la suite, l'idée serait d'avoir des conversations plus fluides avec
+l'assistant, avec davantage de connaissances intégrées et pas seulement
+celles disponibles dans l'immédiat. À terme, l'assistant répondrait non
+seulement à la voix, mais également à des requêtes écrites, et pas
+uniquement via des boutons à activer ou désactiver. Cela rendrait
+l'interaction plus naturelle et plus proche d'un véritable assistant
+intelligent.
+
+Enfin, l'utilisation d'Ollama est très importante dans ce projet. Cet
+outil permet d'intégrer une intelligence artificielle locale et ouvre
+beaucoup de possibilités d'évolution. Avec Ollama, il serait possible
+d'enrichir les réponses, d'améliorer la compréhension des demandes de
+l'utilisateur et d'ajouter des fonctionnalités plus avancées. À long
+terme, Ollama pourrait devenir le cœur du système intelligent et
+permettre un développement encore plus poussé et plus interactif de la
+maison intelligente.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\includegraphics[width=0.17639in,height=0.28194in]{vertopal_e39372513fc74674888784101d54e19c/media/image13.png}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\includegraphics[width=1.60417in,height=0.28194in]{vertopal_e39372513fc74674888784101d54e19c/media/image14.png}
+\end{quote}
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+\includegraphics[width=0.17639in,height=0.28194in]{vertopal_e39372513fc74674888784101d54e19c/media/image15.png}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\begin{quote}
+\includegraphics[width=1.58333in,height=0.28194in]{vertopal_e39372513fc74674888784101d54e19c/media/image16.png}
+\end{quote}
+\end{minipage} \\
+\midrule()
+\endhead
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+{[}CAT{]} savoircoder.fr/cat
+
+\includegraphics[width=0.3125in,height=0.21944in]{vertopal_e39372513fc74674888784101d54e19c/media/image17.png}
+
+\textbf{Annexe A :\hspace{0pt}} \textbf{Cahier des charges}\\
+\textbf{1. Contexte du projet}\\
+Ce projet a pour but de réaliser une maison intelligente simulée. Le
+système permet de surveiller différents paramètres de l'habitat et
+d'agir automatiquement en fonction de règles définies.
+
+Une interface web permet à l'utilisateur de contrôler la maison, et une
+intelligence artificielle assiste l'utilisateur dans ses demandes.
+
+\textbf{2. Objectifs du projet}\\
+●\hspace{0pt} Créer une simulation réaliste d'une maison
+intelligente\hspace{0pt}●\hspace{0pt} Gérer automatiquement des capteurs
+et des appareils\hspace{0pt}●\hspace{0pt} Améliorer la sécurité de
+l'habitat (alertes, alarmes)\hspace{0pt}●\hspace{0pt} Proposer une
+interface simple et compréhensible\hspace{0pt}●\hspace{0pt} Intégrer une
+intelligence artificielle locale\hspace{0pt}
+
+\textbf{3. Besoins fonctionnels}\\
+Le système doit permettre :\\
+●\hspace{0pt} L'affichage des capteurs en temps réel (température,
+luminosité, humidité, qualité de l'air, CO, etc.)\hspace{0pt}\\
+●\hspace{0pt} Le contrôle des appareils (éclairage, chauffage,
+climatisation, volets, prises, sécurité)\hspace{0pt}\\
+●\hspace{0pt} La gestion de différents modes de fonctionnement
+(automatique, éco, vacances, alarme)\hspace{0pt}\\
+●\hspace{0pt} Le déclenchement d'alertes visuelles et vocales en cas de
+danger\hspace{0pt}\\
+●\hspace{0pt} L'interaction avec une intelligence artificielle (réponses
+et actions)\\
+\textbf{4. Besoins non fonctionnels}\\
+●\hspace{0pt} Le système doit être fiable et stable\hspace{0pt}\\
+●\hspace{0pt} L'interface doit être simple d'utilisation\hspace{0pt}\\
+●\hspace{0pt} Les réponses doivent être rapides\hspace{0pt}\\
+●\hspace{0pt} Le projet doit être évolutif et modifiable
+facilement\hspace{0pt}
+
+\includegraphics[width=0.3125in,height=0.21944in]{vertopal_e39372513fc74674888784101d54e19c/media/image17.png}
+
+●\hspace{0pt} L'IA doit fonctionner en local, sans dépendre
+d'Internet\hspace{0pt}
+
+\textbf{5. Contraintes techniques}\\
+●\hspace{0pt} Utilisation du langage Python\hspace{0pt}\\
+●\hspace{0pt} Interface web en HTML, CSS et JavaScript\hspace{0pt}\\
+●\hspace{0pt} Serveur web local (localhost)\hspace{0pt}\\
+●\hspace{0pt} Utilisation d'Ollama pour l'intelligence
+artificielle\hspace{0pt}\\
+●\hspace{0pt} Fonctionnement sur un ordinateur standard\hspace{0pt}
+
+\textbf{6. Sécurité}\\
+●\hspace{0pt} Détection du monoxyde de carbone\hspace{0pt}\\
+●\hspace{0pt} Déclenchement automatique d'une alarme au-delà d'un seuil
+critique\hspace{0pt}●\hspace{0pt} Coupure des appareils
+dangereux\hspace{0pt}\\
+●\hspace{0pt} Alerte vocale et visuelle pour prévenir
+l'utilisateur\hspace{0pt}
+
+\textbf{7. Évolutions possibles}\\
+●\hspace{0pt} Enrichissement des connaissances de
+l'assistant\hspace{0pt}●\hspace{0pt} Amélioration des échanges (plus
+naturels et fluides)\hspace{0pt}●\hspace{0pt} Ajout de commandes écrites
+et vocales complètes\hspace{0pt}●\hspace{0pt} Amélioration de la
+structure du code\hspace{0pt}\\
+●\hspace{0pt} Développement de nouvelles fonctionnalités\\
+\textbf{Annexe B :\hspace{0pt}Exemple d\textquotesingle exécution}
+
+Lancement du serveur Python puis accès à l'interface web via un
+navigateur: lorsque le programme est lancé, un message vocal est
+entendu: ``Bonjour, la simulation de la maison intelligente a démarré.
+
+\includegraphics[width=0.3125in,height=0.21944in]{vertopal_e39372513fc74674888784101d54e19c/media/image17.png}
+
+\includegraphics[width=6.59444in,height=1.70833in]{vertopal_e39372513fc74674888784101d54e19c/media/image18.png}
+
+À ce stade, aucun mode spécifique n'est activé : il s'agit de
+l'interface principale par défaut . Depuis celle-ci, il est possible
+d'ajuster différents paramètres, tels que la luminosité, la
+climatisation, etc.
+
+\includegraphics[width=6.59444in,height=2.625in]{vertopal_e39372513fc74674888784101d54e19c/media/image19.png}
+
+\includegraphics[width=6.59444in,height=2.40694in]{vertopal_e39372513fc74674888784101d54e19c/media/image20.png}
+
+Voici ce qu'il se passe lorsque le mode simulation est activé (ce mode
+permet de montrer ce qui se produit en cas de présence excessive de
+monoxyde de carbone).
+
+Tout d'abord, un message vocal se déclenche : il indique la quantité de
+monoxyde de carbone détectée et
+
+\includegraphics[width=0.3125in,height=0.21944in]{vertopal_e39372513fc74674888784101d54e19c/media/image17.png}
+
+informe l'utilisateur du danger. Ce message est également affiché à
+l'écran.
+
+\includegraphics[width=6.59444in,height=0.75972in]{vertopal_e39372513fc74674888784101d54e19c/media/image21.png}
+
+exemple d'utilisation d'ollama dans l'application:
+
+\includegraphics[width=6.59444in,height=2.07222in]{vertopal_e39372513fc74674888784101d54e19c/media/image22.png}
+
+\includegraphics[width=6.59444in,height=1.19722in]{vertopal_e39372513fc74674888784101d54e19c/media/image23.png}
+
+\textbf{projet Annexe C :\hspace{0pt} Manuel utilisateur}
+
+\emph{\uline{1.Lancement du projet}}
+
+1.\hspace{0pt} Lancer le programme Python
+
+2.\hspace{0pt} Le serveur démarre automatiquement
+
+3.\hspace{0pt} L'interface web s'ouvre dans le navigateur à l'adresse
+:\hspace{0pt}
+
+\emph{\uline{2. Interface principale}}
+
+L'interface est divisée en plusieurs parties :
+
+\includegraphics[width=0.3125in,height=0.21944in]{vertopal_e39372513fc74674888784101d54e19c/media/image17.png}
+
+\textbf{Capteurs} : affichent les valeurs actuelles (température,
+humidité, CO, etc.)
+
+\textbf{Appareils} : permettent d'activer ou désactiver les équipements
+
+●\hspace{0pt} \textbf{Modes} : permettent de changer le comportement
+global de la maison ●\hspace{0pt} \textbf{Alertes} : affichent les
+messages importants (ex : danger CO)
+
+\textbf{3. Utilisation des capteurs}
+
+●\hspace{0pt} Certains capteurs peuvent être modifiés manuellement
+(température, luminosité, présence)\\
+●\hspace{0pt} D'autres sont uniquement en lecture (humidité, qualité de
+l'air)
+
+\textbf{4. Utilisation des appareils}
+
+●\hspace{0pt} Cliquer sur les boutons pour allumer ou éteindre les
+appareils\\
+●\hspace{0pt} Le volet peut être réglé avec un curseur\\
+●\hspace{0pt} Les appareils réagissent aussi automatiquement selon les
+modes actifs
+
+\uline{5. Modes disponibles}
+
+●\hspace{0pt}\textbf{\uline{Mode automatique}} : la maison s'adapte
+seule\\
+●\hspace{0pt}\uline{\textbf{Mode éco}} : réduit la consommation
+d'énergie\\
+●\hspace{0pt}\textbf{\uline{Mode vacances}} : sécurise la maison et
+coupe les appareils ●\hspace{0pt}\textbf{\uline{Mode alarme}} : activé
+automatiquement en cas de danger ●\hspace{0pt}\uline{\textbf{Simulation
+CO} :} permet de tester une situation dangereuse
+\end{quote}
+
+\end{document}
