@@ -1,0 +1,303 @@
+e<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartSim Home - Dashboard</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 20px;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+min-height: 100vh;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+}
+.header {
+text-align: center;
+margin-bottom: 30px;
+padding: 20px;
+background: rgba(255,255,255,0.1);
+border-radius: 15px;
+}
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 15px;
+margin-bottom: 30px;
+}
+.stat-card {
+background: rgba(255,255,255,0.1);
+padding: 20px;
+border-radius: 10px;
+text-align: center;
+}
+.stat-value {
+font-size: 2em;
+font-weight: bold;
+margin: 10px 0;
+}
+.controls-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 10px;
+margin-bottom: 30px;
+}
+.control-btn {
+background: rgba(255,255,255,0.2);
+border: none;
+color: white;
+padding: 15px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s;
+}
+.control-btn:hover {
+background: rgba(255,255,255,0.3);
+}
+.control-btn.active {
+background: #27ae60;
+}
+.control-btn.security.active {
+background: #e74c3c;
+}
+.history {
+background: rgba(255,255,255,0.1);
+padding: 20px;
+border-radius: 10px;
+max-height: 200px;
+overflow-y: auto;
+}
+.notification {
+position: fixed;
+top: 20px;
+right: 20px;
+background: #27ae60;
+color: white;
+padding: 15px;
+border-radius: 10px;
+z-index: 1000;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🏠 SmartSim Home - DASHBOARD</h1>
+<p>Interface de simulation de maison intelligente</p>
+</div>
+
+
+
+
+<div class="stats-grid">
+<div class="stat-card">
+<div>🌡️ Température</div>
+<div class="stat-value" id="temp">21.5°C</div>
+</div>
+<div class="stat-card">
+<div>💡 Luminosité</div>
+<div class="stat-value" id="light">75%</div>
+</div>
+<div class="stat-card">
+<div>⚡ Consommation</div>
+<div class="stat-value" id="energy">1.8 kWh</div>
+</div>
+<div class="stat-card">
+<div>👤 Présence</div>
+<div class="stat-value" id="presence">NON</div>
+</div>
+</div>
+
+
+
+
+<div class="controls-grid">
+<button class="control-btn" onclick="toggleDevice('light')" id="light-btn">
+💡 Éclairage: <span id="light-status">OFF</span>
+</button>
+<button class="control-btn" onclick="toggleDevice('heating')" id="heating-btn">
+🔥 Chauffage: <span id="heating-status">OFF</span>
+</button>
+<button class="control-btn" onclick="toggleDevice('ac')" id="ac-btn">
+❄️ Climatisation: <span id="ac-status">OFF</span>
+</button>
+<button class="control-btn security" onclick="toggleDevice('security')" id="security-btn">
+🔒 Sécurité: <span id="security-status">ON</span>
+</button>
+<button class="control-btn" onclick="toggleMode('vacation')" id="vacation-btn">
+🏖️ Vacances: <span id="vacation-status">OFF</span>
+</button>
+<button class="control-btn" onclick="adjustBlinds()" id="blinds-btn">
+🪟 Volets: <span id="blinds-value">50%</span>
+</button>
+</div>
+
+
+
+
+<div class="history">
+<h3>📋 Historique Récent</h3>
+<div id="history-list">Chargement...</div>
+</div>
+</div>
+
+
+
+
+<script>
+const API_BASE = 'http://localhost:8000/api';
+async function fetchData() {
+try {
+console.log('🔄 Récupération des données...');
+const response = await fetch(API_BASE + '/etat');
+if (!response.ok) throw new Error('API error');
+const data = await response.json();
+console.log('📊 Données reçues:', data);
+updateDisplay(data);
+const historyResponse = await fetch(API_BASE + '/historique');
+if (historyResponse.ok) {
+const historyData = await historyResponse.json();
+updateHistory(historyData);
+}
+} catch (error) {
+console.log('Erreur:', error);
+showNotification('Erreur de connexion', 'error');
+}
+}
+function updateDisplay(data) {
+console.log('📊 Mise à jour affichage:', data);
+if (!data || !data.sensors) {
+console.error('❌ Données invalides:', data);
+return;
+}
+// Capteurs
+document.getElementById('temp').textContent = data.sensors.temperature.toFixed(1) + '°C';
+document.getElementById('light').textContent = Math.round(data.sensors.luminosite) + '%';
+document.getElementById('energy').textContent = data.sensors.energy.toFixed(1) + ' kWh';
+document.getElementById('presence').textContent = data.sensors.presence ? 'OUI' : 'NON';
+// Appareils - MAPPING CORRIGÉ
+document.getElementById('light-status').textContent = data.devices.eclairage ? 'ON' : 'OFF';
+document.getElementById('heating-status').textContent = data.devices.chauffage ? 'ON' : 'OFF';
+document.getElementById('ac-status').textContent = data.devices.climatisation ? 'ON' : 'OFF';
+document.getElementById('security-status').textContent = data.devices.securite ? 'ON' : 'OFF';
+document.getElementById('vacation-status').textContent = data.modes.vacation ? 'ON' : 'OFF';
+document.getElementById('blinds-value').textContent = data.devices.volet + '%';
+// Boutons actifs
+updateButtonState('light', data.devices.eclairage);
+updateButtonState('heating', data.devices.chauffage);
+updateButtonState('ac', data.devices.climatisation);
+updateButtonState('security', data.devices.securite);
+updateButtonState('vacation', data.modes.vacation);
+}
+function updateButtonState(device, isOn) {
+const btn = document.getElementById(device + '-btn');
+if (btn) {
+if (isOn) {
+btn.classList.add('active');
+} else {
+btn.classList.remove('active');
+}
+}
+}
+function updateHistory(data) {
+const list = document.getElementById('history-list');
+if (data.history && data.history.length > 0) {
+list.innerHTML = data.history.map(action =>
+`<div>${action}</div>`
+).join('');
+} else {
+list.innerHTML = '<div>Aucun historique</div>';
+}
+}
+async function toggleDevice(device) {
+console.log('🔧 Toggle device:', device);
+try {
+const response = await fetch(API_BASE + '/controle/' + device, {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({action: 'toggle'})
+});
+if (response.ok) {
+showNotification(`${device} modifié`);
+// Attendre un peu puis rafraîchir
+setTimeout(fetchData, 500);
+} else {
+throw new Error('Erreur serveur');
+}
+} catch (error) {
+console.log('Erreur contrôle:', error);
+showNotification('Erreur de contrôle', 'error');
+}
+}
+async function toggleMode(mode) {
+console.log('🔧 Toggle mode:', mode);
+try {
+const response = await fetch(API_BASE + '/mode/' + mode, {
+method: 'POST',
+headers: {'Content-Type': 'application/json'}
+});
+if (response.ok) {
+showNotification(`Mode ${mode} modifié`);
+setTimeout(fetchData, 500);
+}
+} catch (error) {
+console.log('Erreur mode:', error);
+showNotification('Erreur mode', 'error');
+}
+}
+async function adjustBlinds() {
+const current = parseInt(document.getElementById('blinds-value').textContent);
+const newPos = (current + 25) % 125;
+const pos = newPos > 100 ? 0 : newPos;
+console.log('🔧 Ajuster volets:', pos);
+try {
+const response = await fetch(API_BASE + '/controle/volet', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({position: pos})
+});
+if (response.ok) {
+showNotification(`Volets à ${pos}%`);
+setTimeout(fetchData, 500);
+}
+} catch (error) {
+console.log('Erreur volets:', error);
+showNotification('Erreur volets', 'error');
+}
+}
+function showNotification(message, type = 'success') {
+const notification = document.createElement('div');
+notification.className = 'notification';
+notification.textContent = message;
+if (type === 'error') {
+notification.style.background = '#e74c3c';
+}
+document.body.appendChild(notification);
+setTimeout(() => {
+if (document.body.contains(notification)) {
+document.body.removeChild(notification);
+}
+}, 3000);
+}
+// Rafraîchir toutes les 3 secondes
+setInterval(fetchData, 3000);
+// Chargement initial
+fetchData();
+console.log('✅ JavaScript chargé - Dashboard prêt!');
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
