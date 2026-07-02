@@ -7,7 +7,7 @@ import pyttsx3
 import ollama
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from assistant.connaissances import CONNAISSANCES_IA
-# Classe maison CORRIGÉE avec automatisation qui fonctionne
+
 class MaisonIntelligente:
     def __init__(self):
         print("🏠 Initialisation de la maison intelligente...")
@@ -16,7 +16,6 @@ class MaisonIntelligente:
         )
 
 
-        # Valeurs initiales fixes
         self.capteurs = {
             "temperature": type("Capteur", (), {"valeur": 21.5})(),
             "luminosite": type("Capteur", (), {"valeur": 65})(),
@@ -29,7 +28,7 @@ class MaisonIntelligente:
         }
 
         self.actionneurs = {
-            "eclairage": type("Actionneur", (), {"etat": False, "intensite": 0})(),  # intensité à 0 quand éteint
+            "eclairage": type("Actionneur", (), {"etat": False, "intensite": 0})(),  
             "chauffage": type("Actionneur", (), {"etat": False, "temperature_cible": 21})(),
             "climatisation": type("Actionneur", (), {"etat": False, "temperature_cible": 22})(),
             "securite": type("Actionneur", (), {"etat": True})(),
@@ -43,21 +42,21 @@ class MaisonIntelligente:
         self.alertes = []
         self.derniere_alerte_co = 0
         self.historique = ["Système démarré"]
-        self.regles = []   # liste de règles
-        self.regle_id = 1  # compteur d'id
+        self.regles = []  
+        self.regle_id = 1  
         self.derniere_modification = time.time()
         
 
         print("✅ Maison initialisée avec valeurs stables"),
     def mettre_a_jour_capteurs(self):
         """Mise à jour très lente des capteurs"""
-        # 🔥 MODE SIMULATION MONOXYDE DE CARBONE
+      
         if self.modes.get("simulation_co"):
             self.capteurs["monoxyde_carbone"].valeur = 300
             self.automatiser_actions()
             return
         current_time = time.time()
-        # Seulement de petites variations toutes les 60 secondes
+        
         if current_time - self.derniere_modification > 60:
             temp_variation = random.uniform(-0.1, 0.1)
             self.capteurs["temperature"].valeur = round(
@@ -68,14 +67,12 @@ class MaisonIntelligente:
             new_lum = self.capteurs["luminosite"].valeur + lum_variation
             self.capteurs["luminosite"].valeur = max(0, min(100, new_lum))
 
-            # AJOUTER ICI : Variation d'humidité aléatoire
+            
             hum_variation = random.uniform(-1, 1)
             new_hum = self.capteurs["humidite"].valeur + hum_variation
             self.capteurs["humidite"].valeur = round(max(30, min(70, new_hum)), 1)
 
-            # --- Simulation monoxyde de carbone (CO) ---
-            # 98% du temps : normal (CO faible / baisse)
-            # 2% du temps : incident (valeurs dangereuses)
+           
             if random.random() < 0.98:
                 self.capteurs["monoxyde_carbone"].valeur = max(
                     0,
@@ -84,22 +81,20 @@ class MaisonIntelligente:
             else:
                 self.capteurs["monoxyde_carbone"].valeur = random.choice([20, 40, 250])
 
-            # on marque la dernière maj pour éviter de modifier en boucle
+
             self.derniere_modification = current_time
     
     def automatiser_actions(self):
         """Automatisation + sécurité vitale"""
 
-        # 🛑 PRIORITÉ ABSOLUE : MONOXYDE DE CARBONE (CO)
         co = float(self.capteurs["monoxyde_carbone"].valeur)
-        # Si l'alarme a été déclenchée automatiquement et que le CO est redevenu sûr,
-        # on la coupe afin que l'UI n'affiche plus l'alerte en permanence.
+
         if co < 200 and self.modes.get("alarme") and self.alarme_auto_active:
           self.modes["alarme"] = False
           self.alarme_auto_active = False
           self.historique.append("✅ ALARME désactivée automatiquement (CO revenu < 200 ppm)")
         if co >= 200:
-            # Couper les sources dangereuses
+           
             print("DEBUG modes runtime:", self.modes)
             if not self.modes["alarme"]:
                self.modes["alarme"] = True
@@ -111,9 +106,9 @@ class MaisonIntelligente:
                 self.modes["alarme"] = True
                 self.alarme_auto_active = True
                 self.historique.append("🚨 ALARME activée automatiquement (CO > 200 ppm)")
-            # Aérer au maximum
+           
             self.actionneurs["volet"].position = 100
-                # Alerte visuelle forte
+                
             self.actionneurs["eclairage"].etat = True
             self.actionneurs["eclairage"].intensite = 100
             current_time = time.time()
@@ -130,26 +125,24 @@ class MaisonIntelligente:
               
 
                self.generer_alerte_vocale(alerte_msg)
-             # Alerte visuelle forte
+            
                self.actionneurs["eclairage"].etat = True
                self.actionneurs["eclairage"].intensite = 100
   
-            # Historique critique
+            
                self.historique.append(
                 "🛑 ALERTE CO CRITIQUE : Gaz mortel détecté ! "
                 "Ouvrez immédiatement les fenêtres, sortez et appelez les pompiers (18 / 112)."
             )
             return
         self.appliquer_regles()
-        # 🔒 MODE VACANCES
         if self.modes["vacances"]:
             self._appliquer_mode_vacances()
             return
-        # 🌱 MODE ÉCO (prioritaire)
+
         if self.modes["eco"]:
            self._appliquer_mode_eco()
-           return  # Sortir pour éviter l'automatisation normale
-        # 🤖 AUTOMATISATION NORMALE
+           return  
         if self.modes["automatique"]:
             self._automatisation_normale()
              
@@ -171,37 +164,33 @@ class MaisonIntelligente:
          presence = self.capteurs["presence"].valeur
          luminosite = self.capteurs["luminosite"].valeur
          temperature = self.capteurs["temperature"].valeur
-          # 1) Chauffage / clim : seuils ÉCO (bande plus large)
-          #  # Chauffage: ON seulement si vraiment froid
+        
          if temperature >= 18:
           self.actionneurs["chauffage"].etat = False
-         # Clim: ON seulement si vraiment chaud
+        
          if temperature <= 27:
             self.actionneurs["climatisation"].etat = False
-         # 2) Prise salon : OFF par défaut pour économiser
-         # (Option A: OFF tout le temps)
+       
          self.actionneurs["prise_salon"].etat = False
-         # (Option B si tu préfères: ON seulement si présence)
-         # self.actionneurs["prise_salon"].etat = bool(presence)
+         
          if temperature < 18:
             self.actionneurs["chauffage"].etat = True
          if temperature > 27:
             self.actionneurs["climatisation"].etat = True
-         # 3) Lumière : plafonner très bas (ou OFF si possible)
+        
          if self.actionneurs["eclairage"].etat:
-            # plafonne l’intensité
+            
             if self.actionneurs["eclairage"].intensite > 35:
                self.actionneurs["eclairage"].intensite = 35
 
-              # Si c'est sombre mais présence, plutôt ouvrir les volets que d'allumer fort
          if presence and luminosite < 40:
-           # On ouvre un peu les volets pour profiter de la lumière naturelle
+           
                self.actionneurs["volet"].position = max(self.actionneurs["volet"].position, 80)
 
-              # Et si la lumière est ON, on reste en intensité basse
+          
                self.actionneurs["eclairage"].intensite = min(self.actionneurs["eclairage"].intensite, 35)
 
-              # Si pas de présence : tout OFF
+
          if not presence:
             self.actionneurs["eclairage"].etat = False
             self.actionneurs["eclairage"].intensite = 0
@@ -214,7 +203,7 @@ class MaisonIntelligente:
         luminosite = self.capteurs["luminosite"].valeur
         temperature = self.capteurs["temperature"].valeur
 
-        # 💡 Gestion de l'éclairage
+      
         if presence:
             if luminosite < 40:
                 self.actionneurs["eclairage"].etat = True
@@ -226,7 +215,7 @@ class MaisonIntelligente:
             self.actionneurs["eclairage"].etat = False
             self.actionneurs["eclairage"].intensite = 0
 
-        # 🔥 Chauffage / climatisation
+       
         if presence:
             if temperature < 19:
                 self.actionneurs["chauffage"].etat = True
@@ -241,7 +230,7 @@ class MaisonIntelligente:
             self.actionneurs["chauffage"].etat = False
             self.actionneurs["climatisation"].etat = False
 
-        # 🪟 Volets
+     
         if presence:
             if luminosite > 80:
                 self.actionneurs["volet"].position = 30
@@ -252,10 +241,10 @@ class MaisonIntelligente:
         else:
             self.actionneurs["volet"].position = 20
 
-        # 🔒 Sécurité
+       
         self.actionneurs["securite"].etat = not presence
 
-        # 🔌 Prise
+     
         self.actionneurs["prise_salon"].etat = presence
 
     def ajouter_regle(self, condition: dict, actions: list, nom: str = ""):
@@ -303,12 +292,12 @@ class MaisonIntelligente:
         if sensor not in self.capteurs:
             return False
 
-        # récupérer valeur capteur
+       
         v = getattr(self.capteurs[sensor], "valeur", None)
         if v is None:
             return False
 
-        # cast basique (presence = bool)
+      
         if sensor == "presence":
             v = bool(v)
             value = bool(value)
@@ -354,7 +343,7 @@ class MaisonIntelligente:
         Anti-spam: si une règle se déclenche, on log 1 fois, et on ne relance
         pas en boucle si l'état n'a pas changé (simple).
         """
-        # stocke mémoire de dernier déclenchement (créé si absent)
+       
         if not hasattr(self, "_regles_last_fire"):
             self._regles_last_fire = {}
 
@@ -365,7 +354,7 @@ class MaisonIntelligente:
             ok = self._condition_ok(r.get("condition", {}))
             rid = r["id"]
 
-            # déclenche seulement quand ça passe de False -> True
+           
             prev = self._regles_last_fire.get(rid, False)
             if ok and not prev:
                 self.historique.append(f"✅ Règle déclenchée: {r['nom']} (id={rid})")
@@ -396,13 +385,13 @@ class MaisonIntelligente:
                 "prise_salon": self.actionneurs["prise_salon"].etat,
             },
             "modes": self.modes,
-            "alertes": self.alertes[-5:],          # 5 dernières alertes
-           "historique": self.historique[-10:],   # 10 derniers événements
+            "alertes": self.alertes[-5:],          
+           "historique": self.historique[-10:],  
         }
 
     def _calculer_consommation(self):
         """Calcule la consommation énergétique totale"""
-        consommation = 0.5  # base
+        consommation = 0.5  
         if self.actionneurs["eclairage"].etat:
             consommation += 0.3 * (self.actionneurs["eclairage"].intensite / 100)
         if self.actionneurs["chauffage"].etat:
@@ -462,7 +451,7 @@ class MaisonIntelligente:
                 else:
                     return False, "Consommation négative impossible"
             
-            # AJOUTER CE BLOC POUR monoxyde_carbone
+           
             elif capteur == "monoxyde_carbone":
                 new_value = float(valeur)
                 if new_value >= 0:
@@ -510,10 +499,10 @@ class MaisonIntelligente:
         engine.runAndWait()
     def repondre_question(self, question: str) -> str:  
          question_lower = question.lower()
-         # 1. Salutations
+        
          if any(mot in question_lower for mot in ["bonjour", "salut", "hello", "bonsoir"]):
            return "Bonjour 👋 Je suis votre assistant SmartSim Home. Comment puis-je vous aider ?"
-         # 2. Aide
+        
          if any(mot in question_lower for mot in ["aide", "help", "que peux-tu", "commandes"]):
             return (
                 "Je peux :\n"
@@ -523,22 +512,22 @@ class MaisonIntelligente:
             "- vous donner l'état actuel de la maison\n"
             "- analyser les niveaux de monoxyde de carbone\n"
         )
-         # 3. Température idéale
+         
          if "nuit" in question_lower:
           return "🌙 Pour bien dormir, une chambre entre 15 et 19°C est souvent recommandée. Je peux régler à 18.5°C."
          if "éco" in question_lower or "eco" in question_lower:
             return "🌱 Pour économiser l'énergie, je conseille 19°C (en évitant de descendre sous 18°C)."
          if "température" in question_lower or "temperature" in question_lower:
            return "🏠 En journée, viser autour de 21°C est un bon compromis confort/santé."
-          # 4. Analyse santé/environnement
+         
          if any(mot in question_lower for mot in ["santé", "sante", "humidité", "humidite", "moisissure", "analyse"]):
               temp = self.capteurs["temperature"].valeur
               hum = self.capteurs["humidite"].valeur  
               alertes = []
-        # Température
+        
          if temp < 18:
             alertes.append(f"⚠️ Température basse ({temp:.1f}°C). En dessous de 18°C, cela peut être défavorable à la santé.")
-        # Humidité
+        
          if hum > 60:
             alertes.append(f"🛑 Humidité très élevée ({hum:.0f}%). Au-delà de 60%, risque de moisissures. Aérer conseillé.")
          elif hum > 50:
@@ -552,7 +541,7 @@ class MaisonIntelligente:
          for alerte in alertes:
             reponse += f"\n• {alerte}"
             return reponse
-        # 5. Monoxyde de carbone
+        
          if "monoxyde" in question_lower or "co " in question_lower or "carbone" in question_lower:
              co_val = self.capteurs["monoxyde_carbone"].valeur
         
@@ -564,7 +553,7 @@ class MaisonIntelligente:
             return f"Niveau élevé de CO - aérer la pièce immédiatement - CO actuel: {co_val} ppm"
          elif co_val >= 10:
             return f"Niveau modéré de CO - surveiller la situation - CO actuel: {co_val} ppm"
-         # 6. État de la maison
+        
          if "état" in question_lower or "etat" in question_lower or "status" in question_lower:
              etat = self.get_etat_maison()
              return (
@@ -576,7 +565,7 @@ class MaisonIntelligente:
                   f"• 👤 Présence: {'Oui' if etat['sensors']['presence'] else 'Non'}\n"
                   f"• ⚠️ CO: {etat['sensors']['monoxyde_carbone']} ppm"
                   )
-          # Si rien ne correspond, retourner un message d'erreur
+          
          return "Je n'ai pas compris votre question."
     def demander_ia(self, texte_utilisateur: str):
         """
@@ -622,7 +611,7 @@ DEMANDE UTILISATEUR :
                 prompt=prompt
             )
             data = self._extraire_json(response.get("response", ""))
-             # Si pas de JSON exploitable → réponse texte simple
+            
             if not data:
               reply = response.get("response", "").strip()
               if not reply:
@@ -631,7 +620,7 @@ DEMANDE UTILISATEUR :
               return reply
             reply = data.get("reply", "")
             actions = data.get("actions", [])
-            # Appliquer les actions
+            
             for action in actions:
                  t = action.get("type")
                  if t == "set_mode":
@@ -656,7 +645,7 @@ DEMANDE UTILISATEUR :
                      position = action.get("position")
                      if position is not None:
                        self.modifier_actionneur("volet", valeur=int(position))
-            # Réponse vocale
+            
             self.generer_alerte_vocale(reply)
 
             return reply
@@ -683,7 +672,7 @@ DEMANDE UTILISATEUR :
         self.historique.append(f"⚙️ Mode {mode} {etat_str}")
         if mode == "alarme":
          self.alarme_auto_active = False
-        # Réappliquer l'automatisation après changement de mode
+        
         self.automatiser_actions()
 
 
@@ -1182,25 +1171,25 @@ class SmartHomeHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
-           # --- Gestion des modes ---
+          
              if self.path.startswith("/api/mode/"):
                  mode = self.path.split("/")[-1]
                  self.handle_mode(mode)
-             # --- Gestion des actionneurs ---
+             
              elif self.path.startswith("/api/controle/"):
                   device = self.path.split("/")[-1]
                   self.handle_control(device)
-             # --- Modification des capteurs ---
+           
              elif self.path == "/api/modifier/capteur":
                   self.handle_modifier_capteur() 
              elif self.path == "/api/regles/add":
                  self.handle_regles_add()
              elif self.path == "/api/regles/delete":
                   self.handle_regles_delete()
-                  # --- Assistant IA (NOUVEAU) ---
+                
              elif self.path == "/api/assistant":
                   self.handle_assistant()  
-             # --- Endpoint inconnu ---
+             
              else:
                  self.send_error(404, "Endpoint non trouvé")
         except Exception as e:
@@ -1252,7 +1241,7 @@ class SmartHomeHandler(BaseHTTPRequestHandler):
                 "etat": self.maison.get_etat_maison()
             })
             return
-          # 🤖 Appel Ollama (si pas de réponse locale)
+          
         reply = self.maison.demander_ia(texte)
         self.send_json_response({
         "status": "success",
