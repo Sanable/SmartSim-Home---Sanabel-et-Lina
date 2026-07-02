@@ -12,7 +12,7 @@ from .actionneurs import Chauffage, Eclairage, SystemeSecurite, Climatisation, V
 class MaisonIntelligente:
 def __init__(self):
 print("🏠 Initialisation de la maison intelligente...")
-# Capteurs
+
 self.capteurs = {
 'temperature': CapteurTemperature(),
 'luminosite': CapteurLuminosite(),
@@ -21,7 +21,7 @@ self.capteurs = {
 'humidite': CapteurHumidite(),
 'qualite_air': CapteurQualiteAir()
 }
-# Actionneurs
+
 self.actionneurs = {
 'chauffage': Chauffage(),
 'eclairage': Eclairage(),
@@ -32,17 +32,17 @@ self.actionneurs = {
 }
 
 
-# Modes
+
 self.mode_vacances = False
 self.mode_automatique = True
 self.mode_eco = False
 
 
-# Historique
+
 self.historique_actions = []
 self.historique_temperature = []
 self.historique_energie = []
-# Programmation horaire
+
 self.programmes = {
 'reveil': {'heure': "07:00", 'actions': ['chauffage_on', 'volets_ouvrir']},
 'nuit': {'heure': "23:00", 'actions': ['tout_eteindre', 'securite_on']}
@@ -52,9 +52,7 @@ self.programmes = {
 print("Maison prête ✔️")
 
 
-# -------------------------
-# Mise à jour des capteurs
-# -------------------------
+
 def mettre_a_jour_capteurs(self):
 presence = self.capteurs['presence'].valeur
 
@@ -72,9 +70,7 @@ heure = datetime.now().hour
 return (7 <= heure < 9) or (17 <= heure < 20)
 
 
-# -------------------------
-# Automatisation
-# -------------------------
+
 def automatiser_actions(self):
 if not self.mode_automatique:
 return
@@ -110,9 +106,6 @@ self._gestion_qualite_air()
 self._executer_programmes_horaires()
 
 
-# -------------------------
-# Modes
-# -------------------------
 def _appliquer_mode_vacances(self):
 self.actionneurs['chauffage'].desactiver()
 self.actionneurs['eclairage'].desactiver()
@@ -133,9 +126,6 @@ if self.actionneurs['eclairage'].etat:
 self.actionneurs['eclairage'].regler_intensite(70)
 
 
-# -------------------------
-# Scénarios occupation / absence
-# -------------------------
 def _scenario_occupation(self, temperature, luminosite, heure):
 # Chauffage / clim
 if temperature < 20:
@@ -176,9 +166,6 @@ self.actionneurs['chauffage'].desactiver()
 self.actionneurs['climatisation'].desactiver()
 
 
-# -------------------------
-# Fonctions annexes
-# -------------------------
 def _optimisation_energetique(self):
 conso = self.calculer_consommation_totale()
 if conso > 5:
@@ -192,9 +179,6 @@ if not self.actionneurs['securite'].etat:
 self.actionneurs['volet'].regler_position(80)
 
 
-# -------------------------
-# Programmation horaire
-# -------------------------
 def _executer_programmes_horaires(self):
 maintenant = datetime.now().strftime("%H:%M")
 
@@ -217,9 +201,7 @@ elif action == 'volets_ouvrir':
 self.actionneurs['volet'].ouvrir()
 
 
-# -------------------------
-# Méthodes manquantes ajoutées
-# -------------------------
+
 def ajouter_historique(self, action):
 """Ajoute une action à l'historique"""
 timestamp = datetime.now().strftime("%H:%M:%S")
@@ -236,10 +218,6 @@ self.ajouter_historique("🌱 Mode éco activé")
 else:
 self.ajouter_historique("🌱 Mode éco désactivé")
 
-
-# -------------------------
-# Consultation état
-# -------------------------
 def calculer_consommation_totale(self):
 total = sum(a.get_consommation() for a in self.actionneurs.values())
 total += self.capteurs['energie'].valeur
@@ -275,7 +253,7 @@ etat = {
 'duree_fonctionnement': f"{len(self.historique_actions)} cycles"
 }
 }
-# Mettre à jour les historiques
+
 self.historique_temperature.append({
 'temperature': etat['capteurs']['temperature'],
 'timestamp': datetime.now().strftime("%H:%M")
@@ -296,7 +274,7 @@ return {
 'sensors': self.get_etat_maison()['capteurs'],
 'devices': self.get_etat_maison()['actionneurs'],
 'modes': self.get_etat_maison()['modes'],
-'history': self.historique_actions[-10:] # 10 dernières actions
+'history': self.historique_actions[-10:] 
 }
 
 
